@@ -10,7 +10,7 @@ export interface Game{
   generes:Array<Genere>;
   parent_platforms:Array<Parent_Platform>;
   publishers:Array<Publishers>;
-  rating:Array<Rating>;
+  ratings:Array<Rating>;
   screenshots:Array<Screenshots>;
   trailers:Array<Trailer>
 }

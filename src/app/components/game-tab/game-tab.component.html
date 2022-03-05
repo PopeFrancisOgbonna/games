@@ -1,26 +1,40 @@
 <div class="game-tab">
   <mat-tab-group mat-align-tabs="start" backgroundColor="primary">
     <mat-tab label="About">
-      <p class="game-tab-par">
-        Platforms: <span>PC</span>
+      <p *ngIf="game.parent_platforms?.length" class="game-tab-par">
+        Platforms: <span *ngFor="let game of game.parent_platforms; let last = last">
+          {{game.platform.name}}<span *ngIf="!last">,</span>
+        </span>
       </p>
-      <p class="game-tab-par">
-        Publishers: <span>Konami</span>
+      <p *ngIf="game.publishers?.length" class="game-tab-par">
+        Publishers: <span *ngFor="let publisher of game.publishers; let last = last">
+         {{publisher.name}}<span *ngIf="!last">,</span>
+        </span>
       </p>
-      <p class="game-tab-par">
-        Website: <a href="" target="_blank" class="game-tab-link">https://</a>
+      <p *ngIf="game.website" class="game-tab-par">
+        Website: <a href="{{game.website}}" target="_blank" class="game-tab-link">{{game.website}}</a>
       </p>
-      <div class="game-description">Game Descriptioning</div>
+      <div class="game-description" [innerHtml]="game.description">Game Descriptioning</div>
       <p class="game-tab-votes">
-        <span>
-          <mat-icon class="game-votes-up">Thumb_up</mat-icon>
-          <span class="game-votes-count">55</span>
-        </span>
-        <span>
-          <mat-icon class="game-votes-down">Thumb_down</mat-icon>
-          <span class="game-votes-count">15</span>
-        </span>
+        <ng-container *ngFor="let rating of game.ratings">
+          <span *ngIf="rating.title ==='exceptional'">
+            <mat-icon class="game-votes-up">Thumb_up</mat-icon>
+            <span class="game-votes-count">{{rating.count || 0}}</span>
+          </span>
+          <span *ngIf="rating.title ==='skip'">
+            <mat-icon class="game-votes-down">Thumb_down</mat-icon>
+            <span class="game-votes-count">{{rating.count || 0}}</span>
+          </span>
+        </ng-container>
       </p>
+    </mat-tab>
+    <mat-tab label="screenshot">
+      <img src="" class="game-screenshot" alt="screenshot">
+    </mat-tab>
+    <mat-tab label="Trailers">
+      <video class="game-trailer" controls>
+        <source src="" type="mp4"> 
+      </video>
     </mat-tab>
   </mat-tab-group>
 </div>

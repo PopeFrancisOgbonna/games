@@ -8,7 +8,7 @@ import { APIResponse, Game } from '../models';
   providedIn: 'root'
 })
 export class HttpService {
-
+  private key='f892e95f7ff54706b7c2cdfa5702cb0a'
   constructor(private http:HttpClient) { }
 
   getGameList(ordering:string,search?:string): Observable<APIResponse<Game>>{
@@ -17,18 +17,19 @@ export class HttpService {
       params = new HttpParams().set('ordering',ordering).set('search',search);
     }
 
-    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}`,{params:params})
+    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}?key=${this.key}`,{params:params})
   }
 
   getGameDetails(id:string): Observable<Game>{
-    const gameInfoRequest = this.http.get(`${env.BASE_URL}/${id}`);
-    const gameTrailerRequest =  this.http.get(`${env.BASE_URL}/${id}/movies`);
-    const gameScreenShotRequest = this.http.get(`${env.BASE_URL}/${id}/screenshots`);
+    const gameInfoRequest = this.http.get(`${env.BASE_URL}/${id}?key=${this.key}`);
+    const gameTrailerRequest =  this.http.get(`${env.BASE_URL}/{id}/movies?key=${this.key}`);
+    const gameScreenShotRequest = this.http.get(`${env.BASE_URL}/${id}/screenshots?key=${this.key}`);
 
     return forkJoin({
       gameInfoRequest,
       gameTrailerRequest,
       gameScreenShotRequest
+      
     }).pipe(
       map((resp: any) =>{
         return {

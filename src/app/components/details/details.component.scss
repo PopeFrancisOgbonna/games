@@ -1,10 +1,11 @@
 .details-wrapper{
-  max-width: 900px;
-  margin: 20px auto;
+  max-width: 100%;
+  margin: 20px 0 auto auto;
   position: relative;
 }
 
 .details{
+  height: 450px;
   ::ng-deep mwl-guage{
     width:150px;
     height: 150px;
@@ -16,11 +17,12 @@
     }
     .value{
       stroke-dasharray: none;
-      stroke-width: 13;
+      stroke-width: 18;
+      fill: #000;
     }
     .value-text{
       fill:#fff;
-      font-weight: 700;
+      font-weight: 900;
       font-size: 24px;
     }
   }
@@ -28,13 +30,13 @@
   .game-guage{
     position: absolute;
     top: 50px;
-    right: 0;
+    right: 15px;
 
     &-label{
-      font-size: 20px;
+      font-size: 18px;
       color: #fff;
       position: relative;
-      bottom: 60px;
+      bottom: 40px;
     }
   }
 }
@@ -56,7 +58,7 @@
   }
   &-header{
     &-title{
-      font-size: 70px;
+      font-size: 40px;
       font-weight: 700;
       line-height: 70px;
       color:#fff;

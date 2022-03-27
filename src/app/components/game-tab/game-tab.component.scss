@@ -4,6 +4,7 @@
     color: #fff;
     text-align: left;
     padding: 10px;
+    height:auto;
 
     &-par{
       padding: 20px 20px 0 20px;
@@ -50,9 +51,9 @@
       margin-left: 10px;
     }
   }
-
+ 
   &-trailer{
-    width: 100%;
-    margin: 20px 0;
+    width: calc(50% - 10px);
+    margin: 10px 5px;
   }
 }

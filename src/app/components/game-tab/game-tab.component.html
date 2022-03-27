@@ -18,22 +18,24 @@
       <p class="game-tab-votes">
         <ng-container *ngFor="let rating of game.ratings">
           <span *ngIf="rating.title ==='exceptional'">
-            <mat-icon class="game-votes-up">Thumb_up</mat-icon>
+            <mat-icon class="game-votes-up">thumb_up</mat-icon>
             <span class="game-votes-count">{{rating.count || 0}}</span>
           </span>
           <span *ngIf="rating.title ==='skip'">
-            <mat-icon class="game-votes-down">Thumb_down</mat-icon>
+            <mat-icon class="game-votes-down">thumb_down</mat-icon>
             <span class="game-votes-count">{{rating.count || 0}}</span>
           </span>
         </ng-container>
       </p>
     </mat-tab>
-    <mat-tab label="screenshot">
-      <img src="" class="game-screenshot" alt="screenshot">
+    <mat-tab label="Screenshot">
+      <img *ngFor="let screenshot of game.screenshots" src="{{screenshot.image}}" class="game-screenshot" alt="screenshot">
     </mat-tab>
-    <mat-tab label="Trailers">
-      <video class="game-trailer" controls>
-        <source src="" type="mp4"> 
+    <mat-tab label="Trailers" *ngIf="game.trailers?.length" class="trailer-container">
+      <video class="game-trailer" controls
+      *ngFor="let trailer of game.trailers">
+        <source  src="{{ trailer.data?.max }}" type="video/mp4" > 
+        You're Browser does not support the video tag.
       </video>
     </mat-tab>
   </mat-tab-group>

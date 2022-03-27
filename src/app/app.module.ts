@@ -33,7 +33,7 @@ import { GameTabComponent } from './components/game-tab/game-tab.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    GaugeModule,
+    GaugeModule.forRoot(),
     MatTabsModule,
     MatIconModule,
     MatFormFieldModule,

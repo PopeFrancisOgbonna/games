@@ -1,5 +1,5 @@
 .details-wrapper{
-  max-width: 100%;
+  width: 100%;
   margin: 20px 0 auto auto;
   position: relative;
 }
@@ -11,9 +11,10 @@
     height: 150px;
     display: block;
     padding: 10px;
+      
 
     .dial{
-      stroke-width: 10;
+      stroke-width: 30;
     }
     .value{
       stroke-dasharray: none;

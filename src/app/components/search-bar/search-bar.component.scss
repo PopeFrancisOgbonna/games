@@ -1,3 +1,4 @@
+$mobile: 480px;
 .search{
   &-container{
     width: 100%;
@@ -37,12 +38,25 @@
     font-weight: 700;
     cursor: pointer;
     transition-duration: 0.3s;
+    
+   
 
     &:hover{
       color: #3f51bf;
       background: #fff;
       border: 1.5px solid #3f51bf;
     }
+  }
+  @media screen and (max-width:$mobile){
+    &-input{
+      width: 55%;
+      margin-left: 5px;
+    }
+    &-button{
+      width: 70px;
+    }
+  
+      
   }
 }
 .logo{
@@ -52,3 +66,4 @@
   cursor: pointer;
   text-decoration: none;
 }
+
